@@ -35,7 +35,7 @@ const User = () => {
                 {info?.data.map((ind) => (
                   <Box
                     w="50%"
-                    bg="yellow.200"
+                    bg="red.100"
                     p="10px"
                     key={ind._id}
                     borderRadius="5px"
