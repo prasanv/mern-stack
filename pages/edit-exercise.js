@@ -9,12 +9,15 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useMutation } from "react-query";
+import { useRouter } from "next/router";
 
-const CreateExercise = () => {
+const EditExercise = () => {
+  const router = useRouter();
+
   const defaultValues = {
-    username: "",
-    description: "",
-    duration: "",
+    username: router.query.username,
+    description: router.query.description,
+    duration: router.query.duration,
   };
 
   const {
@@ -26,24 +29,25 @@ const CreateExercise = () => {
     defaultValues,
   });
 
-  const addExercises = async (inputData = {}) => {
-    const response = await fetch("http://127.0.0.1:8080/exercises/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(inputData),
-    });
+  const editExercises = async (inputData = {}) => {
+    const response = await fetch(
+      `http://127.0.0.1:8080/exercises/update/${router.query.id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(inputData),
+      }
+    );
     const data = await response.json();
-    console.log(data);
     return data;
   };
-  const mutation = useMutation("AddExercise", addExercises);
+  const mutation = useMutation("EditExercise", editExercises);
 
   const onSubmit = (data) => {
     const newExercise = {
       username: data.username,
       description: data.description,
       duration: parseInt(data.duration),
-      date: new Date(),
     };
     mutation.mutate(newExercise);
     window.location = "/";
@@ -110,4 +114,4 @@ const CreateExercise = () => {
   );
 };
 
-export default CreateExercise;
+export default EditExercise;

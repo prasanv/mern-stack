@@ -11,11 +11,18 @@ import {
 import { useMutation } from "react-query";
 
 const CreateUser = () => {
+  const defaultValues = {
+    username: "",
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    mode: "onTouched",
+    defaultValues,
+  });
 
   const addExercises = async (inputData = {}) => {
     const response = await fetch("http://127.0.0.1:8080/users/add", {

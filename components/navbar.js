@@ -16,23 +16,16 @@ const Navbar = () => {
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
-
           <BreadcrumbItem>
             <BreadcrumbLink href="/create-exercise">
               Create Exercise
             </BreadcrumbLink>
           </BreadcrumbItem>
-
           <BreadcrumbItem>
             <BreadcrumbLink href="/create-user">Create User</BreadcrumbLink>
           </BreadcrumbItem>
-
           <BreadcrumbItem>
-            <BreadcrumbLink href="/users">User</BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/edit/:id">ID</BreadcrumbLink>
+            <BreadcrumbLink href="/users">Users</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumb>
       </Box>
