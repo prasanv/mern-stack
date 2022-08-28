@@ -28,11 +28,11 @@ app.use("/exercises", exercisesRouter);
 
 // Connect to Mongo DB
 mongoose
-  .connect(utils.db_URI)
+  .connect(utils.DB_URI)
   .then(() => {
     console.log("Successfully connected to MongoDB");
-    app.listen(utils.port, () => {
-      console.log(`App listening on http://127.0.0.1:${utils.port}/`);
+    app.listen(utils.PORT, () => {
+      console.log(`App listening on http://127.0.0.1:${utils.PORT}/`);
     });
   })
   .catch((err) => console.log(err));

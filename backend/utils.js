@@ -1,11 +1,11 @@
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config({ path: "../backend/.env" });
 
 if (dotenv.error) throw dotenv.error;
 
-const db_URI = dotenv.parsed.DB_HOST;
-const port = dotenv.parsed.PORT;
+const DB_URI = dotenv?.parsed.DB_URI;
+const PORT = dotenv?.parsed.PORT;
 
 module.exports = {
-  db_URI,
-  port,
+  DB_URI,
+  PORT,
 };
