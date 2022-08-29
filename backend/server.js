@@ -8,12 +8,15 @@ const exercisesRouter = require("./routes/exercisesRouter");
 // Express App
 const app = express();
 
-// Middleware
-// Enable cors all requests through middleware
-app.use(cors());
-//parser middleware before the route declaration part
-app.use(express.json()); //parses request in JSON format
-app.use(express.urlencoded({ extended: false })); //parses request in urlencoded format
+// All middlewares should be declared before the route declaration
+
+// CORS is a Node.js package for providing a Connect/Express middleware that can be used to enable Cross Origin Resource Sharing with various options.
+app.use(cors());  // Enable cors all requests through middleware
+
+// Node.js body parsing middleware, parses incoming request bodies in a middleware before your handlers, also available under the req.body property.
+app.use(express.json());  // Built-in Express middleware, parses incoming requests with JSON payloads and it is based on body-parser.
+
+app.use(express.urlencoded({ extended: false }));  // Built-in Express middleware, parses incoming requests with urlencoded payloads and is based on body-parser.
 
 // All Routes
 // simple get request
