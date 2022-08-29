@@ -8,7 +8,8 @@ const exercisesRouter = require("./routes/exercisesRouter");
 // Express App
 const app = express();
 
-// All middlewares should be declared before the route declaration
+// Note: All middlewares should be declared before the route declaration
+// `app.use()` Mounts the specified middleware function .
 
 // CORS is a Node.js package for providing a Connect/Express middleware that can be used to enable Cross Origin Resource Sharing with various options.
 app.use(cors());  // Enable cors all requests through middleware
@@ -21,14 +22,17 @@ app.use(express.urlencoded({ extended: false }));  // Built-in Express middlewar
 // All Routes
 // simple get request
 app.get("/", function (req, res) {
-  console.log(req.url);
+  // console.log(req, res);
+  console.log(req.url)
   res.json({ name: "prasan" });
 });
 
 //Routes
+// Mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path.
 app.use("/users", usersRouter);
 app.use("/exercises", exercisesRouter);
 
+// Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks.
 // Connect to Mongo DB
 mongoose
   .connect(utils.DB_URI)

@@ -1,12 +1,17 @@
 const router = require("express").Router();
 const Exercise = require("../models/exercise.model");
 
+// A router object is an isolated instance of middleware and routes. You can think of it as a “mini-application,” capable only of performing middleware and routing functions. Every Express application has a built-in app router.
+// A router behaves like middleware itself, so you can use it as an argument to app.use() or as the argument to another router’s use() method.
+
+
 // GET ALL EXERCISES
 router.get("/", (req, res) => {
   Exercise.find()
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
+
 
 // ADD NEW EXERCISES
 router.post("/add", (req, res) => {
@@ -20,6 +25,7 @@ router.post("/add", (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
+
 // GET EXERCISE BY ID
 router.get("/:id", (req, res) => {
   const id = req.params.id;
@@ -27,6 +33,7 @@ router.get("/:id", (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
+
 
 // DELETE EXERCISE BY ID
 router.delete("/:id", (req, res) => {
@@ -38,6 +45,7 @@ router.delete("/:id", (req, res) => {
     })
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
+
 
 // UPDATE EXERCISE BY ID
 router.patch("/update/:id", (req, res) => {
